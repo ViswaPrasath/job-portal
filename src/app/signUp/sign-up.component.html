@@ -1,0 +1,377 @@
+<div class="page-header" filter-color="yellow">
+    <div class="page-header-image" style="background-image:url(assets/img/login.webp);background-position:fixed;"></div>
+
+    <div class="container sign-up-wrapper">
+        <div class="card card-login card-plain sign-up-container">
+
+            <div class="row justify-content-around">
+
+                <div class="card col-lg-5 col-md-5 col-sm-5 formCategoryCard activeForm" [ngClass]="{ 'activeForm':candidateCard,'inactiveForm': !candidateCard }" (click)="candidateCard=true;employerCard=false">
+                    <h4>Sign up as an</h4>
+                    <p>Candidate</p>
+                </div>
+
+                <div class="card col-lg-5 col-md-5 col-sm-5 formCategoryCard inactiveForm" [ngClass]="{'activeForm':employerCard ,'inactiveForm': !employerCard}" (click)="employerCard=true;candidateCard=false">
+                    <h4>Sign up as an</h4>
+                    <p>Employer</p>
+                </div>
+            </div>
+
+            <div *ngIf="employerCard">
+                <h2>Employer SignUp</h2>
+                <form class="form row justify-content-around" [formGroup]="employerSignUpForm" (ngSubmit)="employerSignUpFormSubmit()">
+
+                    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;">
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus15===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  <i class="fa fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Company Name... " (focus)="focus15=true" (blur)="focus15=false" formControlName="companyName">
+                            </div>
+                            <p *ngIf="companyName.touched && companyName.hasError('required')" class="typography-line text-danger error-notification">Check out the company name</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus16===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  <i class="fa fa-envelope"></i></span>
+                                </div>
+                                <input type="email" class="form-control" placeholder="Offical Email... " (focus)="focus16=true" (blur)="focus16=false" formControlName="officalEmail">
+                            </div>
+                            <p *ngIf="officalEmail.touched && officalEmail.hasError('required')" class="typography-line text-danger error-notification">Check out the email id</p>
+                            <p *ngIf="officalEmail.touched && officalEmail.hasError('pattern')" class="typography-line text-danger error-notification">Invalid email id</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{'input-group-focus':focus1===true} ">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "><i class="now-ui-icons objects_key-25"></i></span>
+                                </div>
+                                <input type="password" placeholder="Password..." class="form-control " (focus)="focus1=true " (blur)="focus1=false " formControlName="employerPassword" />
+                            </div>
+                            <p *ngIf="employerPassword.touched && employerPassword.hasError('required')" class="typography-line text-danger error-notification">Check out the password.</p>
+                            <p *ngIf="employerPassword.touched && employerPassword.hasError('minlength')" class="typography-line text-danger error-notification">Minimum 6 characters.</p>
+                            <p *ngIf="employerPassword.touched && employerPassword.hasError('maxlength')" class="typography-line text-danger error-notification">Maximum 16 characters.</p>
+                            <p *ngIf="employerPassword.touched && employerPassword.hasError('pattern')" class="typography-line text-danger error-notification">Password should have atleast 1 number & 1 special character.</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus17===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  <i class="fa fa-phone fa-rotate-180"></i></span>
+                                </div>
+                                <input appPhoneNoMask type="text" inputmode="numeric" class="form-control" placeholder="Mobile No... " (focus)="focus17=true" (blur)="focus17=false" formControlName="mobileNo">
+                            </div>
+                            <p *ngIf="mobileNo.touched && mobileNo.hasError('required')" class="typography-line text-danger error-notification">Check out the mobile no</p>
+                            <p *ngIf="mobileNo.touched && mobileNo.hasError('maxlength')" class="typography-line text-danger error-notification">More than 10 characters</p>
+                            <p *ngIf="mobileNo.touched && mobileNo.hasError('minlength')" class="typography-line text-danger error-notification">Less than 10 characters</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus18===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  <i class="fa fa-male"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Contact Person... " (focus)="focus18=true" (blur)="focus18=false" formControlName="contactPersonName">
+                            </div>
+                            <p *ngIf="contactPersonName.touched && contactPersonName.invalid" class="typography-line text-danger error-notification">Check out the contact person</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus19===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  <i class="fa fa-building"></i></span>
+                                </div>
+                                <select class="form-control" formControlName="companyType">
+                                    <option disabled style="font-size: 0.8rem;margin: 2px 8px;">Select company type</option>
+                                    <option *ngFor="let companyType of companyTypeList" value={{companyType}} style="background-color: rgb(82, 80, 80);font-size: 0.8rem;margin: 2px 8px;">{{companyType}}</option>
+                                </select>
+                            </div>
+                            <p *ngIf="companyType.touched && companyType.invalid" class="typography-line text-danger error-notification">Check out the company type</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus20===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  <i class="fa fa-map-marker"></i></span>
+                                </div>
+                                <input appPincodeFormat type="text" inputmode="numeric" class="form-control" placeholder="Pincode... " (focus)="focus20=true" (blur)="focus20=false" formControlName="pincode">
+                            </div>
+                            <p *ngIf="pincode.touched && pincode.hasError('required')" class="typography-line text-danger error-notification">Check out the pincode</p>
+                            <p *ngIf="pincode.touched && pincode.hasError('maxlength')" class="typography-line text-danger error-notification">{{pincode.errors.maxlength.requiredLength - 1}} characters required</p>
+                            <p *ngIf="pincode.touched && pincode.hasError('minlength')" class="typography-line text-danger error-notification">{{pincode.errors.minlength.requiredLength - 1}} characters required</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus21===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  <i class="fa fa-credit-card"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="GSTIN(optional)" (focus)="focus21=true" (blur)="focus21=false" formControlName="GSTIN">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer text-center">
+                        <button class="btn btn-warning btn-round btn-lg btn-block" type="submit" [disabled]="!employerSignUpForm.valid">Get Started</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div *ngIf="candidateCard">
+                <h2>Candidate SignUp</h2>
+                <form class="form row justify-content-around" [formGroup]="signUpForm" (ngSubmit)="signUpFormSubmit()" *ngIf="!enableCVUpload">
+
+                    <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                        <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus===true} ">
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text ">  <i class="now-ui-icons users_circle-08 "></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Name... " (focus)="focus=true" (blur)="focus=false" formControlName="name">
+                        </div>
+                        <p *ngIf="name.touched && name.hasError('required')" class="typography-line text-danger error-notification">Check out the name</p>
+                        <p *ngIf="name.touched && name.hasError('minlength')" class="typography-line text-danger error-notification">minimum characters {{name.errors.minlength.requiredLength}}</p>
+                    </div>
+
+                    <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                        <div class="input-group form-group-no-border input-lg " [ngClass]="{'input-group-focus':focus1===true} ">
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="now-ui-icons objects_key-25"></i></span>
+                            </div>
+                            <input type="password" placeholder="Password..." class="form-control " (focus)="focus1=true " (blur)="focus1=false " formControlName="password" />
+                        </div>
+                        <p *ngIf="password.touched && password.hasError('required')" class="typography-line text-danger error-notification">Check out the password.</p>
+                        <p *ngIf="password.touched && password.hasError('minlength')" class="typography-line text-danger error-notification">Minimum 6 characters.</p>
+                        <p *ngIf="password.touched && password.hasError('maxlength')" class="typography-line text-danger error-notification">Maximum 16 characters.</p>
+                        <!-- <p *ngIf="password.touched && password.hasError('pattern')" class="typography-line text-danger error-notification">Password should have 1 number and 1 special character.</p> -->
+                    </div>
+
+                    <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                        <div class="input-group form-group-no-border input-lg " [ngClass]="{'input-group-focus':focus1===true} ">
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="now-ui-icons ui-1_email-85"></i></span>
+                            </div>
+                            <input type="email" placeholder="Email..." class="form-control " (focus)="focus1=true " (blur)="focus1=false " formControlName="email" autocomplete="off" />
+                        </div>
+                        <p *ngIf="email.touched && email.hasError('required')" class="typography-line text-danger error-notification">Check out the email</p>
+                        <p *ngIf="email.touched && email.hasError('pattern')" class="typography-line text-danger error-notification">Invalid email</p>
+                    </div>
+
+                    <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                        <div class="input-group form-group-no-border input-lg " [ngClass]="{'input-group-focus':focus14===true} ">
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="now-ui-icons ui-1_calendar-60"></i></span>
+                            </div>
+                            <input appDateFormatter type="text" placeholder="Date Of Birth...(dd-mm-yyyy)" class="form-control " (focus)="focus14=true " (blur)="focus14=false " formControlName="DOB" />
+                        </div>
+                        <p *ngIf="DOB.touched && DOB.hasError('required')" class="typography-line text-danger error-notification">Check out the DOB</p>
+                        <p *ngIf="DOB.touched && DOB.hasError('pattern')" class="typography-line text-danger error-notification">Valid pattern (dd-mm-yyyy)</p>
+                    </div>
+
+                    <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input" style="display:flex;align-content:center;height:90px;min-height:90px">
+                        <label class="category">Gender</label>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="gender" value="M" formControlName="gender">
+                                <span class="form-check-sign"></span>
+                               Male
+                            </label>
+                        </div>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="gender" value="F" formControlName="gender">
+                                <span class="form-check-sign"></span>
+                                Female
+                            </label>
+                        </div>
+                        <p *ngIf="gender.touched && gender.invalid" class="typography-line text-danger error-notification" style="position: absolute;bottom: -22px;">Check out the gender</p>
+                    </div>
+
+                    <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                        <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus2===true} ">
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="now-ui-icons ui-1_bell-53"></i></span>
+                            </div>
+                            <input appPhoneNoMask type="text" inputmode="numeric" placeholder="Phone No... " class="form-control " (focus)="focus2=true " (blur)="focus2=false " formControlName="phoneNo" />
+                        </div>
+                        <p *ngIf="phoneNo.touched && phoneNo.hasError('required')" class="typography-line text-danger error-notification">Check out the phoneNo</p>
+                        <p *ngIf="phoneNo.touched && phoneNo.hasError('maxlength')" class="typography-line text-danger error-notification">More than 10 numbers</p>
+                        <p *ngIf="phoneNo.touched && phoneNo.hasError('minlength')" class="typography-line text-danger error-notification">Less than 10 numbers</p>
+                    </div>
+
+                    <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                        <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus3===true} ">
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="now-ui-icons education_hat"></i></span>
+                            </div>
+                            <input type="text" placeholder="Job title..." class="form-control " (focus)="focus3=true " (blur)="focus3=false " formControlName="jobTitle" />
+                        </div>
+                        <p *ngIf="jobTitle.touched && jobTitle.invalid" class="typography-line text-danger error-notification">Check out the Job Title</p>
+                    </div>
+
+                    <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                        <div class="input-group form-group-no-border input-lg " [ngClass]="{'input-group-focus':focus4===true} ">
+                            <textarea type="text" placeholder="Description..." class="form-control " (focus)="focus4=true " (blur)="focus4=false " formControlName="description"></textarea>
+                        </div>
+                        <p *ngIf="description.touched && description.invalid" class="typography-line text-danger error-notification">Check out the description</p>
+                    </div>
+
+                    <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                        <div class="input-group form-group-no-border input-lg " [ngClass]="{'input-group-focus':focus5===true} ">
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="now-ui-icons transportation_air-baloon"></i></span>
+                            </div>
+                            <input type="text" placeholder="Address..." class="form-control " (focus)="focus5=true" (blur)="focus5=false" formControlName="address" autocomplete="off" />
+                        </div>
+                        <p *ngIf="address.touched && address.invalid" class="typography-line text-danger error-notification">Check out the address</p>
+                    </div>
+
+                    <div formArrayName="education" style="width: 100%;">
+                        <h3>Education</h3>
+
+                        <button class="btn btn-neutral" type="button" (click)="addEducation()">Add Education</button>
+
+
+                        <div *ngFor="let edu of education.controls; let i=index" [formGroupName]="i" style="display: flex;justify-content: start;flex-wrap: wrap;" id="educationArray">
+
+                            <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                                <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus6===true} ">
+                                    <input type="text" placeholder="Title..." class="form-control " (focus)="focus6=true" (blur)="focus6=false" formControlName="title" />
+                                </div>
+                                <p *ngIf="edu.get('title').touched && edu.get('title').invalid" class="typography-line text-danger error-notification">Check out the title</p>
+                            </div>
+
+
+                            <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                                <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus7===true} ">
+                                    <input type="text" placeholder="Institute..." class="form-control " (focus)="focus7=true" (blur)="focus7=false" formControlName="institute" />
+                                </div>
+                                <p *ngIf="edu.get('institute').touched && edu.get('institute').invalid" class="typography-line text-danger error-notification">Check out the institute</p>
+                            </div>
+
+                            <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                                <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus8===true} ">
+                                    <input type="text" placeholder="Degree..." class="form-control " (focus)="focus8=true" (blur)="focus8=false" formControlName="degree" />
+                                </div>
+                                <p *ngIf="edu.get('degree').touched && edu.get('degree').invalid" class="typography-line text-danger error-notification">Check out the degree</p>
+                            </div>
+
+                            <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                                <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus9===true} ">
+                                    <input type="text" placeholder="Year...(yyyy-yyyy)" class="form-control " (focus)="focus9=true" (blur)="focus9=false" formControlName="year" />
+                                </div>
+                                <p *ngIf="edu.get('year').touched && edu.get('year').hasError('required')" class="typography-line text-danger error-notification">Check out the year</p>
+                                <p *ngIf="edu.get('year').touched && edu.get('year').hasError('pattern')" class="typography-line text-danger error-notification">Invalid Year</p>
+                            </div>
+
+                            <button type="button" class="btn btn-danger" style="align-self:start;margin-left: 20px;" (click)="deleteEducation(i)"> Delete </button>
+                        </div>
+
+
+                    </div>
+
+                    <!-- <p>{{signUpForm.value | json}}</p> -->
+                    <div formArrayName="skill" style="width: 100%;">
+                        <h3>Skill</h3>
+
+                        <button class="btn btn-neutral" type="button" (click)="addSkill()">Add Skill</button>
+
+
+                        <div *ngFor="let skills of skill.controls; let i=index" [formGroupName]="i" style="display: flex;justify-content:space-between;align-items: flex-end;flex-wrap: wrap;" id="educationArray">
+                            <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                                <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus10===true} ">
+                                    <input type="text" placeholder="Technology..." class="form-control " (focus)="focus10=true" (blur)="focus10=false" formControlName="technology" />
+                                </div>
+                                <p *ngIf="skills.get('technology').touched && skills.get('technology').invalid" class="typography-line text-danger error-notification">Check out the technology</p>
+                            </div>
+
+                            <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                                <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus11===true} ">
+                                    <nouislider class="slider slider-warning form-control" [connect]="true" [min]="0" [max]="100" [step]="1" [(ngModel)]="range[i]" formControlName="percentage" [tooltips]="true" style="width: 100%;"></nouislider>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-danger" style="align-self: baseline;" (click)="deleteSkill(i)"> Delete </button>
+
+                        </div>
+                    </div>
+
+                    <h3>Social Links</h3>
+                    <div formGroupName="socialLinks" style="display: flex;justify-content:space-between;flex-wrap: wrap;width:100%">
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus12===true} ">
+                                <input type="text" placeholder="Facebook..." class="form-control " (focus)="focus12=true" (blur)="focus12=false" formControlName="facebook" />
+                            </div>
+                            <p *ngIf="facebook.touched && facebook.invalid" class="typography-line text-danger error-notification">Check out the facebook</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus13===true} ">
+                                <input type="text" placeholder="LinkedIn..." class="form-control " (focus)="focus13=true" (blur)="focus13=false" formControlName="linkedIn" />
+                            </div>
+                            <p *ngIf="linkedIn.touched && linkedIn.invalid" class="typography-line text-danger error-notification">Check out the linkedIn</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus14===true} ">
+                                <input type="text" placeholder="Instagram..." class="form-control " (focus)="focus14=true" (blur)="focus14=false" formControlName="instagram" />
+                            </div>
+                            <p *ngIf="instagram.touched && instagram.invalid" class="typography-line text-danger error-notification">Check out the instagram</p>
+                        </div>
+                    </div>
+
+                    <div class="footer text-center">
+                        <button class="btn btn-warning btn-round btn-lg btn-block" type="submit" [disabled]="!signUpForm.valid">Get Started</button>
+                    </div>
+
+                </form>
+
+                <div class="text-center" *ngIf="enableCVUpload">
+                    <h2>CV Upload</h2>
+                    <input type="file" ng2FileSelect (onFileSelected)="fileSelected($event)" [uploader]="uploader" accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf" />
+                    <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="allowedType">Upload</button>
+                    <button type="button" class="btn btn-neutral" (click)="toLogin()"> Skip </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- </div> -->
+    </div>
+    <footer class="footer " style="position:fixed; ">
+        <div class="container ">
+            <!-- <nav>
+                    <ul>
+                        <li>
+                            <a href="https://www.creative-tim.com ">
+                            Creative Tim
+                        </a>
+                        </li>
+                        <li>
+                            <a href="https://www.creative-tim.com/about-us ">
+                            About Us
+                        </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com ">
+                            Blog
+                        </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md ">
+                            MIT License
+                        </a>
+                        </li>
+                    </ul>
+                </nav> -->
+            <div class="copyright ">
+                &copy;
+                <!-- {{data | date: 'yyyy'}}, Designed by
+                <a href="https://www.invisionapp.com " target="_blank ">Invision</a>. -->Developed by
+                <strong>Anjana Infotech</strong>.
+            </div>
+        </div>
+    </footer>
+</div>

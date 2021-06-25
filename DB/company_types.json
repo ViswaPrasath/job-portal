@@ -1,0 +1,10 @@
+{"_id":{"$oid":"6019868e989c59f4ad61fedd"},"type":"Technical Support"}
+{"_id":{"$oid":"601986bd989c59f4ad61fede"},"type":"Business Development"}
+{"_id":{"$oid":"601986ce989c59f4ad61fedf"},"type":"Real Estate Business"}
+{"_id":{"$oid":"6019870b989c59f4ad61fee0"},"type":"Share Market Analysis"}
+{"_id":{"$oid":"60198721989c59f4ad61fee1"},"type":"Weather & Environment"}
+{"_id":{"$oid":"60198735989c59f4ad61fee2"},"type":"Finance & Banking Service"}
+{"_id":{"$oid":"6019874c989c59f4ad61fee3"},"type":"IT & Networking Services"}
+{"_id":{"$oid":"6019875b989c59f4ad61fee4"},"type":"Restaurant Services"}
+{"_id":{"$oid":"6019876e989c59f4ad61fee5"},"type":"Defence & Fire Service"}
+{"_id":{"$oid":"60198794989c59f4ad61fee6"},"type":"Home Delivery Services"}

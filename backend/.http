@@ -1,0 +1,200 @@
+POST http://localhost:8000/user/signUp
+content-type: application/json
+
+{
+    "name": "newuser",
+    "DOB": "10-02-2001",
+    "password": "viswaprasath10",
+    "jobTitle": "Web developer",
+    "gender": "M",
+    "description": "I am a web developer with 4 years of experince",
+    "email": "newuser@gmail.com",
+    "phoneNo": "9392929929",
+    "address": "1/6/406-A,Siva Nagar",
+    "education": [{
+        "title": "Computer Science",
+        "institute": "ANJAC",
+        "degree": "B.Sc",
+        "year": "2001-2003"
+    }],
+    "skill": [{
+        "technology": "Angular",
+        "percentage": 60
+    }],
+    "socialLinks": {
+        "facebook": "http://facebook.com",
+        "linkedIn": "http://linkedin.in",
+        "instagram": "https://instagram.in"
+    }
+}
+
+###
+
+POST http://localhost:8000/user/apply
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI4NzgwNjgsImV4cCI6MTYxMjg4MTY2OCwiYXVkIjoiNjAyMjhhYzc2OWQ0NjAwOTEwZjY2MzRlIn0.UTD4ZCJr8RV_C3xty3agSY_v39djHIBm8ECMRFFTWFQ
+
+###
+
+GET http://localhost:8000/company_type
+
+###
+
+POST http://localhost:8000/employer/signUp
+content-type: application/json
+
+{
+    "companyType":"ZOHO Corp..",
+    "officalEmail": "sabaribala@gmail.com",
+    "mobileNo": "9361368868",
+    "contactPersonName": "A.Viswa Prasath",
+    "companyType": "IT/Network Service",
+    "pincode": 626123,
+    "GSTIN": "knjnjn"
+}
+
+###
+
+POST http://localhost:8000/employer/login 
+Content-Type: application/json
+
+{
+    "username":"anjanainfotech@gmail.com",
+    "password":"anjanainfotech"
+}
+
+###
+
+POST http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+    "username":"viswaprasath10@gmail.com",
+    "password":"viswaprasath10"
+}
+
+###
+
+POST http://localhost:8000/user/jobPost
+
+### 
+
+GET http://localhost:8000/employer/singleemployer/60249284fee40a34ccf148ce
+
+
+###
+
+GET http://localhost:8000/user/singlecandidate/602507bf3858bd3500856b8f
+
+###
+GET http://localhost:8000/user/download/cv/website_basic_outline-1612923114061.pdf
+
+###
+POST http://localhost:8000/user/updateProfile/602bd728bf2c380110ea7b51
+Content-Type: application/json
+
+{
+  "name": "newuser",
+  "DOB": "02-02-2001",
+  "jobTitle": "Web Developer",
+  "gender": "M",
+  "description": "xvndjkvdn",
+  "email": "viswaprasath10@gmail.com",
+  "phoneNo": "87888 88888",
+  "address": "kjnvdkjnv",
+  "education": [
+    {
+      "title": "kjndkjakjnkj",
+      "institute": "ANAJC",
+      "degree": "jknkjnn",
+      "year": "2000-2003"
+    }
+  ],
+  "skill": [ { "technology": "Angular" , "percentage": 83 } ],
+  "socialLinks": { "facebook": "", "linkedIn": "", "instagram": "" },
+  "cv": "http://localhost:8000/cvFiles/download-1613440717620.pdf"
+}
+
+### 
+POST http://localhost:8000/employer/updateProfile/602d2714fb64952e342d5a96
+Content-Type: application/json
+
+{
+  "companyName": "newcompany",
+  "officalEmail": "newcompany@gmail.com",
+  "mobileNo": "88778 98989",
+  "contactPersonName": "A.Viswa Prasath",
+  "companyType": "Restaurant Services",
+  "pincode": "626 223",
+  "GSTIN": "897978978"
+}
+
+###
+POST http://localhost:8000/employer/addJobPost
+Content-Type: application/json
+
+{
+  "companyName": "ANAJNA INFOTECH",
+  "employerId" : "34333333",
+  "jobCategory" : "IT/Service" ,
+  "jobDescription" : "FNJKNKSJ",
+  "jobTitle" : "Web Developer",
+  "jobType" : "Full-time",
+  "location" : "626 123",
+  "vacanies" : "23"
+}
+
+###
+GET http://localhost:8000/user/getJob/?jobPerPage=2&currentPage=1
+
+###
+GET http://localhost:8000/employer/updateJob/?employerId=6024bff34017890e24ccee34
+
+###
+POST http://localhost:8000/employer/updateJob
+Content-Type: application/json
+
+{
+  "id": "6044145ea6e8a41e54e6fe05",
+  "companyName": "ANAJNA INFOTECH",
+  "employerId" : "6024bff34017890e24ccee34",
+  "jobCategory" : "IT/Service" ,
+  "jobDescription" : "FNJKNKSJ",
+  "jobTitle" : "Web Developer",
+  "jobType" : "Full-time",
+  "location" : "626 123",
+  "vacancies" : "23",
+  "salary" : "34042" 
+}
+
+###
+POST http://localhost:8000/employer/deleteJob
+Content-Type: application/json
+
+{
+  "id": "6044145ea6e8a41e54e6fe05"
+}
+
+###
+http://localhost:8000/user/getSingleJob/?jobId=6044145ea6e8a41e54e6fe05
+
+###
+POST http://localhost:8000/user/apply4Job
+Content-Type: application/json
+
+{
+  "employerId": "602d2714fb64952e342d5a96",
+  "userId": "ads",
+  "jobId": "dwrecsa"
+}
+
+###
+POST http://localhost:8000/admin/login  
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admn"
+}
+
+###
+GET http://localhost:8000/user/getUsers

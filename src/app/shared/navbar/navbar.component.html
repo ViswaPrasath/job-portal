@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg bg-warning fixed-top navbar-transparent" color-on-scroll="100">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" [routerLink]="['/home']" placement="bottom" ngbTooltip="Developed by Anjana Infotech">
+                jobSeeker
+            </a>
+            <a class="navbar-link" [routerLink]="['/profile']" *ngIf="loginState">
+                <i class="now-ui-icons users_single-02"></i>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/'>
+                        <i class="now-ui-icons shopping_shop"></i>&nbsp;
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li class="nav-item" ngbDropdown *ngIf="employerLoginState">
+                    <a class="nav-link" ngbDropdownToggle>
+                        <i class="now-ui-icons ui-2_settings-90"></i>&nbsp;
+                        <p>Jobs</p>
+                    </a>
+                    <div ngbDropdownMenu>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLink="/jobList">Jobs List</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLink="/jobPost" *ngIf="employerLoginState">
+                                Add Job
+                            </a>
+                    </div>
+                </li>
+                <!-- <div ngbDropdown>
+                    <a class="dropdown-toggle" ngbDropdownToggle>
+                        <span class="button-bar"></span>
+                        <span class="button-bar"></span>
+                        <span class="button-bar"></span>
+                    </a>
+                    <div ngbDropdownMenu>
+                        <a class="dropdown-header">Dropdown header</a>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">One more separated link</a>
+                    </div>
+                </div> -->
+                <!-- <li class="nav-item">
+                    <a class="nav-link" routerLink="/categories">
+                        <i class="now-ui-icons arrows-1_share-66"></i>
+                        <p>Categories</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contact">
+                        <i class="now-ui-icons ui-1_send"></i>
+                        <p>Contact</p>
+                    </a>
+                </li> -->
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login" *ngIf="!loginState">
+                        <i class="now-ui-icons users_single-02"></i>
+                        <p>Login</p>
+                    </a>
+                    <a class="nav-link" (click)="logout()" *ngIf="loginState">
+                        <i class="now-ui-icons users_single-02"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-neutral" routerLink="/signUp">
+                        <p>Sign Up</p>
+                    </a>
+                </li>
+                <div class="dropdown-divider"></div>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                        <p class="d-lg-none d-xl-none">Twitter</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/" target="_blank">
+                        <i class="fab fa-facebook-square"></i>
+                        <p class="d-lg-none d-xl-none">Facebook</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <p class="d-lg-none d-xl-none">Instagram</p>
+                    </a>
+                </li>
+                <div class="dropdown-divider"></div>
+            </ul>
+        </div>
+    </div>
+</nav>

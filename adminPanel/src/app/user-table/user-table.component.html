@@ -1,0 +1,50 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone No</th>
+            <th scope="col">Address</th>
+            <th scope="col">Job Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Education</th>
+            <th scope="col">Skill</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.name }}</td>
+            <td>{{ user.DOB }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phoneNo }}</td>
+            <td>{{ user.address }}</td>
+            <td>{{ user.jobTitle }}</td>
+            <td>{{ user.description }}</td>
+            <td *ngFor="let edu of user.education; let i = index">
+                <p> {{ i + 1 }} . {{ edu.title }} </p>
+                <p> {{ edu.institute }} </p>
+                <p> {{ edu.degree }} </p>
+                <p> {{ edu.year }} </p>
+            </td>
+            <td *ngFor="let s of user.skill; let i = index">
+                <p> {{ s.technology }} - {{ s.percentage }} % </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+      <option [value]="1">1 items per page</option>
+      <option [value]="4">4 items per page</option>
+      <option [value]="6">6 items per page</option>
+    </select>
+</div> -->

@@ -1,0 +1,162 @@
+<div class="page-header" filter-color="yellow">
+    <div class="page-header-image" style="background-image:url(assets/img/login.webp);background-position:fixed;"></div>
+
+    <div class="container sign-up-wrapper">
+        <div class="card card-login card-plain sign-up-container">
+            <div>
+                <h2>Post A Job</h2>
+                <form class="form row justify-content-around" [formGroup]="jobPostForm" (ngSubmit)="jobPostFormSubmit()">
+
+                    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;">
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus1===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  
+                                        <!-- <i class="fa fa-user" style="color: white;"></i> -->
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Job Title" (focus)="focus1=true" (blur)="focus1=false" formControlName="jobTitle">
+                            </div>
+                            <p *ngIf="jobTitle.touched && jobTitle.hasError('required')" class="typography-line text-danger error-notification">Check out the Job title</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <label class="category" style="display: block;text-align: justify;">Job Type</label>
+                            <div style="display: flex;margin-bottom: 20px;">
+                                <div class="form-check form-check-radio">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="jobType" value="Full-Time" formControlName="jobType">
+                                        <span class="form-check-sign"></span>
+                                       Full-Time
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="jobType" value="Part-Time" formControlName="jobType">
+                                        <span class="form-check-sign"></span>
+                                        Part-Time
+                                    </label>
+                                </div>
+
+                            </div>
+                            <p style="height: 120px;" *ngIf="jobType.touched && jobType.invalid" class="typography-line text-danger error-notification" style="position: absolute;bottom: -22px;">Check out the job type</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{'input-group-focus':focus3===true} ">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">
+                                        <!-- <i class="now-ui-icons objects_key-25" style="color: white;"></i> -->
+                                    </span>
+                                </div>
+                                <input type="text" placeholder="Company Name..." class="form-control " (focus)="focus3=true " (blur)="focus3=false " formControlName="companyName" />
+                            </div>
+                            <p *ngIf="companyName.touched && companyName.hasError('required')" class="typography-line text-danger error-notification">Check out the company name</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus4===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  
+                                        <!-- <i class="fa fa-phone fa-rotate-180" style="color: white;"></i> -->
+                                    </span>
+                                </div>
+                                <input type="text" inputmode="numeric" class="form-control" placeholder="Vacancies..." (focus)="focus4=true" (blur)="focus4=false" formControlName="vacancies">
+                            </div>
+                            <p *ngIf="vacancies.touched && vacancies.hasError('required')" class="typography-line text-danger error-notification">Check out the vacancies</p>
+                        </div>
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus8===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  
+                                        <!-- <i class="fa fa-phone fa-rotate-180" style="color: white;"></i> -->
+                                    </span>
+                                </div>
+                                <input type="text" inputmode="numeric" class="form-control" placeholder="Salary..." (focus)="focus8=true" (blur)="focus8=false" formControlName="salary">
+                            </div>
+                            <p *ngIf="salary.touched && salary.hasError('required')" class="typography-line text-danger error-notification">Check out the salary</p>
+                        </div>
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus5===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  
+                                        <!-- <i class="fa fa-male" style="color: white;"></i> -->
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Location... " (focus)="focus5=true" (blur)="focus5=false" formControlName="location">
+                            </div>
+                            <p *ngIf="location.touched && location.invalid" class="typography-line text-danger error-notification">Check out the location</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus6===true}">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  
+                                        <!-- <i class="fa fa-building" style="color: white;"></i> -->
+                                    </span>
+                                </div>
+                                <select class="form-control" formControlName="jobCategory">
+                                    <option disabled style="font-size: 0.8rem;margin: 2px 8px;">Select company type</option>
+                                    <option *ngFor="let jobCategory of jobCategoryList" value={{jobCategory}} style="background-color: rgb(82, 80, 80);font-size: 0.8rem;margin: 2px 8px;">{{jobCategory}}</option>
+                                </select>
+                            </div>
+                            <p *ngIf="jobCategory.touched && jobCategory.hasError('required')" class="typography-line text-danger error-notification">Check out the job category</p>
+                        </div>
+
+                        <div class="content col-xl-5 col-lg-5 col-md-5 sign-up-input">
+                            <div class="input-group form-group-no-border input-lg " [ngClass]="{ 'input-group-focus':focus7===true}">
+                                <!-- <div class="input-group-prepend ">
+                                    <span class="input-group-text ">  <i class="fa fa-map-marker"></i></span>
+                                </div> -->
+                                <textarea type="text" class="form-control" placeholder="Job Description" (focus)="focus7=true" (blur)="focus7=false" formControlName="jobDescription" rows="10" required></textarea>
+                            </div>
+                            <p *ngIf="jobDescription.touched && jobDescription.hasError('required')" class="typography-line text-danger error-notification">Check out the Job Description</p>
+                        </div>
+
+                    </div>
+
+                    <div class="footer text-center">
+                        <button class="btn btn-warning btn-round btn-lg btn-block" type="submit" [disabled]="!jobPostForm.valid">Post A Job</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- </div> -->
+    </div>
+    <footer class="footer " style="position:fixed; ">
+        <div class="container ">
+            <!-- <nav>
+                    <ul>
+                        <li>
+                            <a href="https://www.creative-tim.com ">
+                            Creative Tim
+                        </a>
+                        </li>
+                        <li>
+                            <a href="https://www.creative-tim.com/about-us ">
+                            About Us
+                        </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com ">
+                            Blog
+                        </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md ">
+                            MIT License
+                        </a>
+                        </li>
+                    </ul>
+                </nav> -->
+            <div class="copyright ">
+                &copy;
+                <!-- {{data | date: 'yyyy'}}, Designed by
+                <a href="https://www.invisionapp.com " target="_blank ">Invision</a>. -->Developed by
+                <strong>Anjana Infotech</strong>.
+            </div>
+        </div>
+    </footer>
+</div>

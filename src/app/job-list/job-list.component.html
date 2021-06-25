@@ -1,0 +1,94 @@
+<mat-card style="position: relative;top:30%">
+    <h2>Jobs Posted</h2>
+    <form class="form-container" style="display: flex;flex-wrap:wrap;" [formGroup]="jobForm">
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Company Name</mat-label>
+                <input matInput placeholder="Company Name" color="primary" formControlName="companyName">
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Job Category</mat-label>
+                <select matNativeControl required formControlName="jobCategory">
+                    <option value="Technical Support">Technical Support</option>
+                    <option value="Business Development">Business Development</option>
+                    <option value="Real Estate Business">Real Estate Business</option>
+                    <option value="Share Market Analysis">Share Market Analysis</option>
+                    <option value="Weather & Environment">Weather & Environment</option>
+                    <option value="Finance & Banking Service">Finance & Banking Service</option>
+                    <option value="Home Delivery Services">Home Delivery Services</option>
+                    <option value="Defence & Fire Service">Defence & Fire Service</option>
+                    <option value="Restaurant Services">Restaurant Services</option>
+                  </select>
+            </mat-form-field>
+        </p>
+
+
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Job Title</mat-label>
+                <input matInput placeholder="Job Title" formControlName="jobTitle">
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-label>Job Type</mat-label>
+            <br>
+            <mat-radio-group aria-label="Select an option" formControlName="jobType">
+                <mat-radio-button value="Full-time" name="type" #fullTime>Full-time</mat-radio-button>
+                &nbsp;
+                <mat-radio-button value="Part-time" name="type" #partTime>Part-time</mat-radio-button>
+            </mat-radio-group>
+        </p>
+
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Salary </mat-label>
+                <input matInput placeholder="Salary" formControlName="salary">
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Location</mat-label>
+                <input matInput placeholder="Location" formControlName="location">
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Vacanies</mat-label>
+                <input matInput placeholder="Vacanies" formControlName="vacancies">
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Job Description</mat-label>
+                <textarea cols="15" rows="10" matInput placeholder="Job Description" formControlName="jobDescription"></textarea>
+            </mat-form-field>
+        </p>
+
+    </form>
+
+    <mat-divider></mat-divider>
+    <mat-action-row>
+        <button mat-button mat-raised-button color="warn" #deleteBtn data-id="" (click)="deleteJob(deleteBtn)">Delete</button> &nbsp;
+        <button mat-button mat-raised-button color="primary" #updateBtn data-id="10" (click)="updateJob(updateBtn)">Update</button>
+    </mat-action-row>
+
+</mat-card>
+
+
+<div style="margin-top:250px">
+    <mat-card *ngFor="let job of jobs" #jobRef (click)="loadData(jobs,job)">
+        <mat-card-title>
+            {{job.jobTitle}}
+        </mat-card-title>
+        <mat-card-content>
+            {{job.jobDescription}}
+        </mat-card-content>
+    </mat-card>
+</div>
